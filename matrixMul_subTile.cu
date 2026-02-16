@@ -7,7 +7,10 @@
 #define TILE 16
 #define SUBTILE 8
 
-__global__ void matmul_tiled(int* A, int* B, int* C, int N)
+__global__ void matmul_tiled(
+    const int*  __restrict__ A,    //// __restrict__ is the promise that the all argument will not overlap
+    const int* __restrict__ B,
+    const int* __restrict__ C, int N)
 {
     ////// each block represents tile
     ////// each thread represents each cell of the sub tile
