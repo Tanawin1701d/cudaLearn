@@ -9,7 +9,8 @@ add_executable(cudaLearn
         #main.cu
         #reduc.cu
         #reducWrap.cu
-        matrixMul.cu
+        #matrixMul.cu
+        matrixMul_subTile.cu
 )
 
 set_target_properties(cudaLearn PROPERTIES
