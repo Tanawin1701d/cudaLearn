@@ -10,7 +10,7 @@
 __global__ void matmul_tiled(
     const int*  __restrict__ A,    //// __restrict__ is the promise that the all argument will not overlap
     const int* __restrict__ B,
-    const int* __restrict__ C, int N)
+          int* __restrict__ C, int N)
 {
     ////// each block represents tile
     ////// each thread represents each cell of the sub tile
@@ -48,11 +48,6 @@ __global__ void matmul_tiled(
                 int mem_row_b = 0             + iter * TILE + tile_row;
                 int mem_col_b = mem_pivot_col               + tile_col;
 
-                // int mem_row_fix  = mem_pivot_row               + tile_row;
-                // int mem_col_fix  = mem_pivot_col               + tile_col;
-                // int mem_row_iter = mem_pivot_row + iter * TILE + tile_row;
-                // int mem_col_iter = mem_pivot_col + iter * TILE + tile_col;
-                ////// A: row is fixed but col is itering
                 A_tile[tile_row][tile_col] = A[mem_row_a * N + mem_col_a];
                 ////// B: col is fixed but row is itering
                 B_tile[tile_row][tile_col] = B[mem_row_b * N + mem_col_b];
