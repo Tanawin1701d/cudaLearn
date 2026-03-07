@@ -13,7 +13,8 @@ add_executable(cudaLearn
         #matrixMul_subTile.cu
         #p6_matrixMul_general.cu
         #p7_matrixMul_doubleBuffering.cu
-        p8_matrixMul_load_loop_reorder.cu
+        #p8_matrixMul_load_loop_reorder.cu
+        p9_bfs.cu
 )
 
 set_target_properties(cudaLearn PROPERTIES
